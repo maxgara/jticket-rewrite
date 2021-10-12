@@ -1,0 +1,43 @@
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="main_rewrite.js"></script>
+<link rel="stylesheet" href="main_rewrite.css"></head>
+<body>
+  <div id="main-output">
+    <h1 style="text-align:center"> J - Ticket</h1>
+    <button id="start-login" v-on:click="showLoginPopout=!showLoginPopout">log in</button>
+    <div v-if="showLoginPopout">
+        <input type="text" id="username" v-model="username">
+        <input type="text" id="password" v-model="password">
+        <button id="submit-login" v-on:click="submitLoginAttempt(username,password)">submit</button>
+    </div>
+
+  <table>
+  <tr>
+    <td id="newTicketButton" v-on:click="showNewTicketPopout=true; showSearchPopout=false">New Ticket</td>
+    <td id="SearchButton" v-on:click="showNewTicketPopout=false; showSearchPopout=true">Search</td>
+  </tr>
+</table>
+<div class="newTicketPopout" v-if="showNewTicketPopout">
+  <h1> New Ticket </h1>
+  <h2>Ticket Name</h2>
+  <input type="text" id="ticketName">
+  <button id="addFlexField">Add Flex Field</button>
+  <button id="submit">submit</button>
+</div>
+
+<div class = "searchInput" v-if="showSearchPopout">
+  <h1>Search</h1>
+  <input type="text" id="searchString">
+  <button id="submit">search</button>
+</div>
+
+
+  <standard-table v-bind:harr="harr" v-bind:barr="barr"></standard-table>
+
+
+
+ </div>
+</body>
+</html>
